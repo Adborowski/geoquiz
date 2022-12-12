@@ -9,6 +9,7 @@ function App() {
   const [question, setQuestion] = useState({});
   const [flag, setFlag] = useState();
   const [flagLoaded, setFlagLoaded] = useState(false);
+  const [feedback, setFeedback] = useState("");
 
   const flagRef = useRef();
 
@@ -78,6 +79,14 @@ function App() {
 
   const handleResponse = (code) => {
     console.log(code);
+    if (question.correctCountry.alpha2code == code) {
+      setFeedback({ isCorrect: true, message: " Correct!" });
+    } else {
+      setFeedback({
+        isCorrect: false,
+        message: `Incorrect! The right answer is ${question.correctCountry.name}`,
+      });
+    }
   };
 
   return (
@@ -120,6 +129,17 @@ function App() {
           );
         })}
       </div>
+
+      {feedback && (
+        <div
+          className={styles.feedback}
+          style={{
+            backgroundColor: feedback.isCorrect ? "lightgreen" : "pink",
+          }}
+        >
+          <span>{feedback.message}</span>
+        </div>
+      )}
     </div>
   );
 }

@@ -51,12 +51,20 @@ section {
 .flag img {
   width: 100%;
   display: block;
+  animation: fadeIn 1s forwards;
 }
 
 .flag .loader {
   width: 24px;
   height: 24px;
   margin: auto;
+}
+
+.feedback {
+  padding: 12px;
+  background-color: lightblue;
+  margin-top: 6px;
+  border-radius: 6px;
 }
 
 @keyframes fadeIn {
