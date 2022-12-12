@@ -41,12 +41,11 @@ function App() {
       setQuestion(question);
     }
   }, [roundCountries, roundTopic]);
-
   useEffect(() => {
     if (question.correctCountry) {
       console.log("Question ready!");
       setFlag(
-        `https://countryflagsapi.com/png/${question.correctCountry.alpha2code}`
+        `https://flagcdn.com/${question.correctCountry.alpha2code.toLowerCase()}.svg`
       );
     }
   }, [question]);
@@ -91,9 +90,15 @@ function App() {
 
   return (
     <div className={styles.App}>
-      {roundCountries.length != countriesInRound ? <div>Loading...</div> : ""}
+      {roundCountries.length != countriesInRound ? (
+        <div className={styles.bigLoader}>
+          <span>Loading...</span>
+        </div>
+      ) : (
+        ""
+      )}
       <div className={styles.question}>
-        Which country has this {roundTopic}?
+        <span>Which country has this {roundTopic}?</span>
         <section>
           {roundTopic == "flag" ? (
             <div ref={flagRef} className={styles.flag}>
