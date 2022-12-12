@@ -1,0 +1,69 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Helvetica";
+  box-sizing: border-box;
+}
+
+.App {
+  padding: 12px;
+  margin: 12px;
+  background-color: #fafafa;
+}
+
+.App h1 {
+  font-size: 18px;
+}
+
+.countries {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 6px;
+  margin-top: 6px;
+}
+
+section {
+  margin-top: 6px;
+}
+
+.country {
+  background-color: gold;
+  padding: 12px;
+  border-radius: 6px;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.flag {
+  height: 200px;
+  width: 300px;
+  margin: auto;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.flag img {
+  width: 100%;
+  display: block;
+}
+
+.flag .loader {
+  width: 24px;
+  height: 24px;
+  margin: auto;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
