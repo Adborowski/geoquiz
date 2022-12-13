@@ -1,18 +1,19 @@
 import styles from "./App.module.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Question from "./components/Question";
 import { getQuestionData } from "./functions";
 
 const App = () => {
+  console.log("App Redrawn");
   const [questionData, setQuestionData] = useState({});
+  const difficulty = 4;
 
-  useEffect(() => {
-    getQuestionData(difficulty).then((data) => {
+  useMemo(() => {
+    getQuestionData(4).then((data) => {
       setQuestionData(data);
     });
-  }, []);
+  }, [difficulty]);
 
-  const difficulty = 3;
   return (
     <div className={styles.App}>
       <Question questionData={questionData} />

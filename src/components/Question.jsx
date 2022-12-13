@@ -25,9 +25,7 @@ const Question = ({ questionData }) => {
   const Subject = ({ topic, correctCountry }) => (
     <section className={styles.subject}>
       {topic == "flag" ? (
-        <img
-          src={`https://flagcdn.com/${correctCountry.alpha2code.toLowerCase()}.svg`}
-        />
+        <img src={correctCountry.flagURL} />
       ) : (
         <span>{correctCountry[topic]}</span>
       )}

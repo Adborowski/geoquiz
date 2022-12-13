@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { getTopic } from "./TopicsList";
 import { getCountryCode } from "./CountriesList";
 
@@ -16,6 +15,7 @@ export const getCountryData = async (countryCode) => {
     requestOptions
   );
   const data = await response.json();
+  data[0].flagURL = await getFlagURL(countryCode);
   return data[0];
 };
 
@@ -27,8 +27,18 @@ export const getCountriesArray = async (countriesCount) => {
   return countriesArray;
 };
 
+async function getFlagURL(countryCode) {
+  const res = await fetch(
+    `https://flagcdn.com/${countryCode.toLowerCase()}.svg`
+  );
+  const blob = await res.blob();
+  const blobURL = URL.createObjectURL(blob);
+  return blobURL;
+}
+
 export const getQuestionData = async (countriesCount) => {
   const countriesArray = await getCountriesArray(countriesCount);
+
   let questionObj = {
     pointWorth: countriesCount * 10,
     topic: getTopic(),
