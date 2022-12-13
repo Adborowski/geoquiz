@@ -11,6 +11,9 @@
   background-color: #eaeaea;
   border-radius: 3px;
   position: relative;
+  max-width: 400px;
+  margin: auto;
+  margin-top: 12px;
 }
 
 .App h1 {
@@ -23,9 +26,21 @@
   display: block;
 }
 
+.question .questionContent {
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
+
+.country {
+  transition: 0.3s all ease;
+}
+
+.countries.finished .country {
+  pointer-events: none;
+  filter: brightness(0.5);
+}
+
 .countries {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   grid-gap: 6px;
   margin-top: 6px;
 }
@@ -40,6 +55,12 @@ section {
   border-radius: 6px;
   opacity: 0;
   animation: fadeIn 1s forwards;
+  margin-bottom: 6px;
+}
+
+.country:hover {
+  filter: brightness(0.9);
+  cursor: pointer;
 }
 
 .flag {
