@@ -8,6 +8,8 @@ const App = () => {
   console.log("App Redrawn");
   const [questionData, setQuestionData] = useState({});
   const [questions, setQuestions] = useState([]);
+  let [score, setScore] = useState(0);
+  const howManyQuestions = 3;
   const difficulty = 4;
 
   useMemo(() => {
@@ -15,14 +17,13 @@ const App = () => {
       setQuestionData(data);
     });
 
-    getQuestions(3, difficulty).then((data) => {
+    getQuestions(howManyQuestions, difficulty).then((data) => {
       setQuestions(data);
     });
   }, [difficulty]);
 
   return (
     <div className={styles.App}>
-      {/*<Question questionData={questionData} /> */}
       <QuestionsViewer questions={questions} />
     </div>
   );

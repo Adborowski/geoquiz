@@ -3,6 +3,13 @@
   margin: 0;
   font-family: "Helvetica";
   box-sizing: border-box;
+  scrollbar-width: none !important;
+}
+
+*::-webkit-scrollbar {
+  display: none !important;
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
 }
 
 html {

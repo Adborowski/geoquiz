@@ -3,7 +3,7 @@ import styles from "./Question.module.css";
 import Loader from "./Loader";
 
 const Question = ({ questionData }) => {
-  const { topic, correctCountry, countries } = questionData;
+  const { topic, correctCountry, countries, id } = questionData;
   const [isCorrect, setIsCorrect] = useState();
   const [answer, setAnswer] = useState(false);
 
@@ -19,12 +19,12 @@ const Question = ({ questionData }) => {
 
   const Options = ({ countries }) => {
     return (
-      <section className={styles.answerOptions}>
+      <div className={styles.answerOptions}>
         {countries &&
           countries.map((country) => (
             <Option answer={answer} key={country.name} country={country} />
           ))}
-      </section>
+      </div>
     );
   };
 
@@ -50,13 +50,13 @@ const Question = ({ questionData }) => {
   };
 
   const Subject = ({ topic, correctCountry }) => (
-    <section className={styles.subject}>
+    <div className={styles.subject}>
       {topic == "flag" ? (
         <img src={correctCountry.flagURL} />
       ) : (
         <span>{correctCountry[topic]}</span>
       )}
-    </section>
+    </div>
   );
 
   return topic && correctCountry && countries ? (
@@ -66,9 +66,11 @@ const Question = ({ questionData }) => {
       ${answer && isCorrect ? styles.completed : ""}
       `}
     >
-      <h1> Which country has this {topic}?</h1>
-      <Subject topic={topic} correctCountry={correctCountry} />
-      <Options countries={countries} />
+      <section>
+        <h1> Which country has this {topic}?</h1>
+        <Subject topic={topic} correctCountry={correctCountry} />
+        <Options countries={countries} />
+      </section>
     </div>
   ) : (
     <div>
