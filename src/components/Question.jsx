@@ -1,24 +1,51 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Question.module.css";
 import Loader from "./Loader";
 
 const Question = ({ questionData }) => {
   const { topic, correctCountry, countries } = questionData;
+  const [isCorrect, setIsCorrect] = useState();
+  const [answer, setAnswer] = useState(false);
 
-  useEffect(() => {
-    console.log("Question data:", questionData);
-  }, [questionData]);
+  const handleAnswer = (answerCode) => {
+    console.log(answerCode, correctCountry.alpha2code);
+    setAnswer(answerCode);
+    if (answerCode == correctCountry.alpha2code) {
+      setIsCorrect(true);
+    } else {
+      setIsCorrect(false);
+    }
+  };
 
   const Options = ({ countries }) => {
     return (
       <section className={styles.answerOptions}>
         {countries &&
           countries.map((country) => (
-            <div key={country.name} className={styles.option}>
-              {country.name}
-            </div>
+            <Option answer={answer} key={country.name} country={country} />
           ))}
       </section>
+    );
+  };
+
+  const Option = ({ answer, country }) => {
+    return (
+      <div
+        onClick={() => {
+          handleAnswer(country.alpha2code);
+        }}
+        key={country.name}
+        className={`
+          ${styles.option} 
+          ${
+            answer && country.alpha2code == correctCountry.alpha2code
+              ? styles.correct
+              : ""
+          }
+          `}
+      >
+        {country.name}
+      </div>
     );
   };
 
@@ -33,7 +60,12 @@ const Question = ({ questionData }) => {
   );
 
   return topic && correctCountry && countries ? (
-    <div className={styles.Question}>
+    <div
+      className={`${styles.Question} 
+      ${answer && !isCorrect ? styles.failed : ""}
+      ${answer && isCorrect ? styles.completed : ""}
+      `}
+    >
       <h1> Which country has this {topic}?</h1>
       <Subject topic={topic} correctCountry={correctCountry} />
       <Options countries={countries} />

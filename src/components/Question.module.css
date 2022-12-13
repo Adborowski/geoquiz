@@ -2,6 +2,24 @@
   background-color: white;
   padding: 18px;
   border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.Question.failed,
+.Question.completed {
+  pointer-events: none;
+}
+
+.Question.failed {
+  background-color: rgb(255, 94, 94);
+}
+
+.Question.failed .option {
+  background-color: rgb(255, 157, 157);
+}
+
+.Question.completed {
+  background-color: rgb(99, 223, 99);
 }
 
 .Question h1 {
@@ -28,8 +46,16 @@
 .option {
   padding: 12px;
   background-color: gold;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 1.2rem;
   border-radius: 6px;
   margin-bottom: 3px;
+}
+
+.option.correct {
+  background-color: rgb(156, 236, 156) !important;
+}
+
+.option.incorrect {
+  background-color: pink;
 }

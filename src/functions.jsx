@@ -40,6 +40,7 @@ export const getQuestionData = async (countriesCount) => {
   const countriesArray = await getCountriesArray(countriesCount);
 
   let questionObj = {
+    id: Math.floor(Math.random() * 1000000),
     pointWorth: countriesCount * 10,
     topic: getTopic(),
     countries: countriesArray,
@@ -48,4 +49,13 @@ export const getQuestionData = async (countriesCount) => {
   };
 
   return questionObj;
+};
+
+export const getQuestions = async (questionsCount, countriesCount) => {
+  let questionsArray = [];
+  for (let i = 1; i <= questionsCount; i++) {
+    const newData = await getQuestionData(countriesCount);
+    questionsArray.push(newData);
+  }
+  return questionsArray;
 };

@@ -22,7 +22,4 @@ body {
   margin: auto;
   display: block;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
