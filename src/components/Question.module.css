@@ -1,14 +1,28 @@
+.Question {
+  background-color: white;
+  padding: 18px;
+  border-radius: 12px;
+}
+
 .Question h1 {
   text-align: center;
-  margin-bottom: 18px;
+  font-size: 1.5rem;
+  font-weight: 100;
 }
 
 .subject {
-  margin-bottom: 18px;
+  margin: 18px auto;
+  text-align: center;
 }
 
 .subject img {
   max-width: 100%;
+  border: 1px solid black;
+}
+
+.subject span {
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .option {

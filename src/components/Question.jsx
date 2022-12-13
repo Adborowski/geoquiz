@@ -1,30 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styles from "./Question.module.css";
 import Loader from "./Loader";
 
 const Question = ({ questionData }) => {
   const { topic, correctCountry, countries } = questionData;
-  console.log(topic);
-  console.log(correctCountry);
-  console.log(countries);
 
   useEffect(() => {
     console.log("Question data:", questionData);
   }, [questionData]);
 
-  return topic && correctCountry && countries ? (
-    <div className={styles.Question}>
-      <h1> Which country has this {topic}?</h1>
-      <section className={styles.subject}>
-        {topic == "flag" ? (
-          <img
-            src={`https://flagcdn.com/${correctCountry.alpha2code.toLowerCase()}.svg`}
-          />
-        ) : (
-          <span>{correctCountry[topic]}</span>
-        )}
-      </section>
-
+  const Options = ({ countries }) => {
+    return (
       <section className={styles.answerOptions}>
         {countries &&
           countries.map((country) => (
@@ -33,6 +19,26 @@ const Question = ({ questionData }) => {
             </div>
           ))}
       </section>
+    );
+  };
+
+  const Subject = ({ topic, correctCountry }) => (
+    <section className={styles.subject}>
+      {topic == "flag" ? (
+        <img
+          src={`https://flagcdn.com/${correctCountry.alpha2code.toLowerCase()}.svg`}
+        />
+      ) : (
+        <span>{correctCountry[topic]}</span>
+      )}
+    </section>
+  );
+
+  return topic && correctCountry && countries ? (
+    <div className={styles.Question}>
+      <h1> Which country has this {topic}?</h1>
+      <Subject topic={topic} correctCountry={correctCountry} />
+      <Options countries={countries} />
     </div>
   ) : (
     <div>
