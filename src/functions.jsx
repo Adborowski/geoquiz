@@ -29,12 +29,12 @@ export const getCountriesArray = async (countriesCount) => {
 
 export const getQuestionData = async (countriesCount) => {
   const countriesArray = await getCountriesArray(countriesCount);
-  console.log(countriesArray);
   let questionObj = {
     pointWorth: countriesCount * 10,
     topic: getTopic(),
     countries: countriesArray,
-    // correctCountry: countries[Math.floor(Math.random() * countries.length)],
+    correctCountry:
+      countriesArray[Math.floor(Math.random() * countriesArray.length)],
   };
 
   return questionObj;

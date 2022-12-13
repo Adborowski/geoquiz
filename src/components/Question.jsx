@@ -1,17 +1,43 @@
 import React, { useState, useEffect } from "react";
-import { getQuestionData } from "../functions";
 import styles from "./Question.module.css";
 
-const Question = ({ difficulty }) => {
-  const [questionData, setQuestionData] = useState({});
+const Question = ({ questionData }) => {
+  const { topic, correctCountry, countries } = questionData;
+  console.log(topic);
+  console.log(correctCountry);
+  console.log(countries);
 
   useEffect(() => {
-    getQuestionData(difficulty).then((data) => {
-      setQuestionData(data);
-    });
-  }, []);
+    console.log("Question data:", questionData);
+  }, [questionData]);
 
-  return <div className={styles.Question}>{questionData.topic}</div>;
+  return (
+    topic &&
+    correctCountry &&
+    countries && (
+      <div className={styles.Question}>
+        <h1> Which country has this {topic}?</h1>
+        <section className={styles.subject}>
+          {topic == "flag" ? (
+            <img
+              src={`https://flagcdn.com/${correctCountry.alpha2code.toLowerCase()}.svg`}
+            />
+          ) : (
+            <span>{correctCountry[topic]}</span>
+          )}
+        </section>
+
+        <section className={styles.answerOptions}>
+          {countries &&
+            countries.map((country) => (
+              <div key={country.name} className={styles.option}>
+                {country.name}
+              </div>
+            ))}
+        </section>
+      </div>
+    )
+  );
 };
 
 export default Question;
