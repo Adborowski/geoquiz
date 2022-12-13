@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Question.module.css";
+import Loader from "./Loader";
 
 const Question = ({ questionData }) => {
   const { topic, correctCountry, countries } = questionData;
@@ -11,32 +12,32 @@ const Question = ({ questionData }) => {
     console.log("Question data:", questionData);
   }, [questionData]);
 
-  return (
-    topic &&
-    correctCountry &&
-    countries && (
-      <div className={styles.Question}>
-        <h1> Which country has this {topic}?</h1>
-        <section className={styles.subject}>
-          {topic == "flag" ? (
-            <img
-              src={`https://flagcdn.com/${correctCountry.alpha2code.toLowerCase()}.svg`}
-            />
-          ) : (
-            <span>{correctCountry[topic]}</span>
-          )}
-        </section>
+  return topic && correctCountry && countries ? (
+    <div className={styles.Question}>
+      <h1> Which country has this {topic}?</h1>
+      <section className={styles.subject}>
+        {topic == "flag" ? (
+          <img
+            src={`https://flagcdn.com/${correctCountry.alpha2code.toLowerCase()}.svg`}
+          />
+        ) : (
+          <span>{correctCountry[topic]}</span>
+        )}
+      </section>
 
-        <section className={styles.answerOptions}>
-          {countries &&
-            countries.map((country) => (
-              <div key={country.name} className={styles.option}>
-                {country.name}
-              </div>
-            ))}
-        </section>
-      </div>
-    )
+      <section className={styles.answerOptions}>
+        {countries &&
+          countries.map((country) => (
+            <div key={country.name} className={styles.option}>
+              {country.name}
+            </div>
+          ))}
+      </section>
+    </div>
+  ) : (
+    <div>
+      <Loader />
+    </div>
   );
 };
 
