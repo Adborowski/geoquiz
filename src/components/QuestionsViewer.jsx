@@ -5,6 +5,7 @@ import Loader from "./Loader";
 
 export default function QuestionsViewer({ questions }) {
   const [questionsArray, setQuestionsArray] = useState();
+  const [score, setScore] = useState(0);
 
   useMemo(() => {
     setQuestionsArray(questions);
@@ -14,7 +15,10 @@ export default function QuestionsViewer({ questions }) {
     setQuestionsArray(questions); // dev only
   };
 
-  const updateQuestions = (id) => {
+  const updateQuestions = (id, isCorrect) => {
+    if (isCorrect) {
+      setScore((prev) => prev + questions[0].pointWorth);
+    }
     setTimeout(() => {
       // the timeout is here so the transition can play out
       setQuestionsArray((prev) => {
@@ -27,9 +31,11 @@ export default function QuestionsViewer({ questions }) {
 
   return (
     <div className={styles.QuestionsViewer}>
-      <button className={styles.reset} onClick={resetQuestions}>
-        Reset
-      </button>
+      <div className={styles.controls}>
+        <div className={styles.scorePanel}>
+          <span>{score}</span>
+        </div>
+      </div>
       <div className={styles.Questions}>
         {questionsArray && questionsArray.length > 0 ? (
           questionsArray.map((q) => (

@@ -10,7 +10,7 @@ const Question = ({ questionData, updateQuestions }) => {
   const handleAnswer = (answerCode) => {
     console.log(answerCode, correctCountry.alpha2code);
     setAnswer(answerCode);
-    updateQuestions(questionData.id);
+    updateQuestions(questionData.id, answerCode == correctCountry.alpha2code);
     if (answerCode == correctCountry.alpha2code) {
       setIsCorrect(true);
     } else {

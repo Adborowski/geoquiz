@@ -8,7 +8,7 @@ const App = () => {
   const [questionData, setQuestionData] = useState({});
   const [questions, setQuestions] = useState([]);
   const howManyQuestions = 100;
-  const difficulty = 4;
+  const difficulty = 5;
 
   useMemo(() => {
     getQuestionData(difficulty).then((data) => {
