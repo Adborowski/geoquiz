@@ -1,15 +1,13 @@
 import styles from "./App.module.css";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import QuestionsViewer from "./components/QuestionsViewer";
-import Question from "./components/Question";
 import { getQuestionData, getQuestions } from "./functions";
 
 const App = () => {
   console.log("App Redrawn");
   const [questionData, setQuestionData] = useState({});
   const [questions, setQuestions] = useState([]);
-  let [score, setScore] = useState(0);
-  const howManyQuestions = 3;
+  const howManyQuestions = 10;
   const difficulty = 4;
 
   useMemo(() => {

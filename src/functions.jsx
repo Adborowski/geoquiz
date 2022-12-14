@@ -8,17 +8,25 @@ const requestOptions = {
   // redirect: "follow",
   headers: fetchHeaders,
 };
-// T3mDSdb6OhyhG3hvjLch3XTizzZAaDBA
 
-export const getCountryData = async (countryCode) => {
-  const response = await fetch(
-    `https://api.apilayer.com/geo/country/code/${countryCode}`,
-    requestOptions
-  );
+const getCountryData = async (countryCode) => {
+  const response = await fetch(`http://178.128.198.24:3000/api`);
   const data = await response.json();
-  data[0].flagURL = await getFlagURL(countryCode);
-  return data[0];
+  // console.log("NEW DATA:", data[countryCode]);
+  return data[countryCode];
 };
+
+// getNewCountryData("PL");
+
+// export const getCountryData = async (countryCode) => {
+//   const response = await fetch(
+//     `https://api.apilayer.com/geo/country/code/${countryCode}`,
+//     requestOptions
+//   );
+//   const data = await response.json();
+//   data[0].flagURL = await getFlagURL(countryCode);
+//   return data[0];
+// };
 
 export const getCountriesArray = async (countriesCount) => {
   let countriesArray = [];

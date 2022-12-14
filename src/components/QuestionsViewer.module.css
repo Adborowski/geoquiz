@@ -7,3 +7,16 @@
 
 .Questions {
 }
+
+button.reset {
+  border: 0;
+  width: 100px;
+  padding: 18px;
+  position: fixed;
+  top: 18px;
+  left: 50vw;
+  margin-left: -50px;
+  background-color: gold;
+  border-radius: 6px;
+  z-index: 1000;
+}

@@ -12,6 +12,10 @@ export default function QuestionsViewer({ questions }) {
     setQuestionsArray(questions);
   }, [questions]);
 
+  const resetQuestions = () => {
+    setQuestionsArray(questions);
+  };
+
   const updateQuestions = (id) => {
     setTimeout(() => {
       // the timeout is here so the transition can play out
@@ -20,7 +24,7 @@ export default function QuestionsViewer({ questions }) {
           return item.id !== id;
         });
       });
-    }, 2000);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -29,6 +33,9 @@ export default function QuestionsViewer({ questions }) {
 
   return (
     <div className={styles.QuestionsViewer}>
+      <button className={styles.reset} onClick={resetQuestions}>
+        Reset
+      </button>
       <div className={styles.Questions}>
         {questionsArray && questionsArray.length > 0 ? (
           questionsArray.map((q) => (
@@ -40,6 +47,9 @@ export default function QuestionsViewer({ questions }) {
           ))
         ) : (
           <>
+            <button className={styles.reset} onClick={resetQuestions}>
+              Reset
+            </button>
             <Loader />
             {questions.length}
           </>
