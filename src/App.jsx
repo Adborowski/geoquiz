@@ -7,7 +7,7 @@ const App = () => {
   console.log("App Redrawn");
   const [questionData, setQuestionData] = useState({});
   const [questions, setQuestions] = useState([]);
-  const howManyQuestions = 10;
+  const howManyQuestions = 100;
   const difficulty = 4;
 
   useMemo(() => {

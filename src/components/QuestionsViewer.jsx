@@ -4,8 +4,6 @@ import Question from "./Question";
 import Loader from "./Loader";
 
 export default function QuestionsViewer({ questions }) {
-  console.log("QuestionsViewer received questions:", questions);
-
   const [questionsArray, setQuestionsArray] = useState();
 
   useMemo(() => {
@@ -26,10 +24,6 @@ export default function QuestionsViewer({ questions }) {
       });
     }, 1000);
   };
-
-  useEffect(() => {
-    console.log("questions updated:", questionsArray);
-  }, [questionsArray]);
 
   return (
     <div className={styles.QuestionsViewer}>

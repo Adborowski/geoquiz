@@ -53,7 +53,7 @@ const Question = ({ questionData, updateQuestions }) => {
   const Subject = ({ topic, correctCountry }) => (
     <div className={styles.subject}>
       {topic == "flag" ? (
-        <img src={correctCountry.flagURL} />
+        <img src={correctCountry.flag} />
       ) : (
         <span>{correctCountry[topic]}</span>
       )}
