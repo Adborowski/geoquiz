@@ -11,7 +11,7 @@ export default function QuestionsViewer({ questions }) {
   }, [questions]);
 
   const resetQuestions = () => {
-    setQuestionsArray(questions);
+    setQuestionsArray(questions); // dev only
   };
 
   const updateQuestions = (id) => {
