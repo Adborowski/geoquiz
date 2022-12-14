@@ -11,30 +11,10 @@
 .controls {
   border: 0;
   width: 200px;
-  padding: 6px;
   position: fixed;
   top: 18px;
   left: 50vw;
   margin-left: -100px;
-  background-color: gold;
   border-radius: 6px;
   z-index: 1000;
-}
-
-.controls .scorePanel {
-  text-align: center;
-  font-size: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* border: 1px solid black; */
-}
-
-.controls .scorePanel span {
-  display: block;
-  margin-top: 3px;
-  /* background-color: white; */
-}
-
-button.reset {
 }

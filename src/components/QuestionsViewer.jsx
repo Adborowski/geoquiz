@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import styles from "./QuestionsViewer.module.css";
 import Question from "./Question";
 import Loader from "./Loader";
+import Scoreboard from "./Scoreboard";
 
 export default function QuestionsViewer({ questions }) {
   const [questionsArray, setQuestionsArray] = useState();
@@ -32,9 +33,7 @@ export default function QuestionsViewer({ questions }) {
   return (
     <div className={styles.QuestionsViewer}>
       <div className={styles.controls}>
-        <div className={styles.scorePanel}>
-          <span>{score}</span>
-        </div>
+        <Scoreboard score={score} />
       </div>
       <div className={styles.Questions}>
         {questionsArray && questionsArray.length > 0 ? (
