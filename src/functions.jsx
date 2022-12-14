@@ -9,27 +9,28 @@ const getAllCountries = async () => {
 
 const countries = await getAllCountries();
 
-const getCountryData = async (countryCode) => {
+const getCountryData = (countryCode) => {
   const data = countries[countryCode];
   return data;
 };
 
-export const getCountriesArray = async (countriesCount) => {
-  let countriesArray = [];
-  for (let i = 1; i <= countriesCount; i++) {
-    countriesArray.push(await getCountryData(getCountryCode()));
+const getUniqueCodes = (codesCount) => {
+  let uniqueCodes = [];
+  while (uniqueCodes.length < codesCount) {
+    const randomCode = getCountryCode();
+    if (!uniqueCodes.includes(randomCode)) {
+      uniqueCodes.push(randomCode);
+    }
   }
-  return countriesArray;
+  return uniqueCodes;
 };
 
-async function getFlagURL(countryCode) {
-  const res = await fetch(
-    `https://flagcdn.com/${countryCode.toLowerCase()}.svg`
+export const getCountriesArray = (countriesCount) => {
+  let countriesArray = getUniqueCodes(countriesCount).map((code) =>
+    getCountryData(code)
   );
-  const blob = await res.blob();
-  const blobURL = URL.createObjectURL(blob);
-  return blobURL;
-}
+  return countriesArray;
+};
 
 export const getQuestionData = async (countriesCount) => {
   const countriesArray = await getCountriesArray(countriesCount);
