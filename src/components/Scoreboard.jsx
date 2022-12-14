@@ -4,7 +4,6 @@ import styles from "./Scoreboard.module.css";
 export default function Scoreboard({ score }) {
   const [isPulsing, setIsPulsing] = useState(false);
   useEffect(() => {
-    console.log("New score", score);
     setIsPulsing(true);
     setTimeout(() => {
       setIsPulsing(false);

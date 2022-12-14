@@ -6,7 +6,9 @@
   justify-content: center;
   filter: brightness(1);
   background-color: gold;
-  border-radius: 6px;
+  max-width: 80px;
+  margin: auto;
+  border-radius: 60px;
   padding: 6px;
 }
 
@@ -16,7 +18,8 @@
 
 .Scoreboard span {
   display: block;
-  margin-top: 3px;
+  padding-top: 4px;
+  margin: auto;
 }
 
 @keyframes pulse {
@@ -36,22 +39,22 @@
 @keyframes shake {
   10%,
   90% {
-    transform: translate3d(-1px, 0, 0);
+    transform: translate3d(-0.5px, 0, 0);
   }
 
   20%,
   80% {
-    transform: translate3d(2px, 0, 0);
+    transform: translate3d(1px, 0, 0);
   }
 
   30%,
   50%,
   70% {
-    transform: translate3d(-4px, 0, 0);
+    transform: translate3d(-2px, 0, 0);
   }
 
   40%,
   60% {
-    transform: translate3d(4px, 0, 0);
+    transform: translate3d(2px, 0, 0);
   }
 }

@@ -8,7 +8,6 @@ const Question = ({ questionData, updateQuestions }) => {
   const [answer, setAnswer] = useState(false);
 
   const handleAnswer = (answerCode) => {
-    console.log(answerCode, correctCountry.alpha2code);
     setAnswer(answerCode);
     updateQuestions(questionData.id, answerCode == correctCountry.alpha2code);
     if (answerCode == correctCountry.alpha2code) {

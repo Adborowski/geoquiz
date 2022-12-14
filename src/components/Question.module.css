@@ -8,7 +8,7 @@
 }
 
 .Question section {
-  padding: 12px;
+  padding: 18px;
   padding-top: 18px;
 }
 
@@ -97,6 +97,11 @@
   font-size: 1.2rem;
   border-radius: 6px;
   margin-bottom: 3px;
+}
+
+.option:hover {
+  filter: brightness(0.95);
+  cursor: pointer;
 }
 
 .option.correct {

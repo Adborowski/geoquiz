@@ -1,0 +1,14 @@
+.MapBackground {
+  background-color: rgb(143, 226, 253);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -10;
+}
+
+.map {
+  height: 500px;
+  width: 500px;
+}
