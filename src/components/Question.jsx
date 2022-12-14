@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Question.module.css";
 import Loader from "./Loader";
 
-const Question = ({ questionData }) => {
+const Question = ({ questionData, updateQuestions }) => {
   const { topic, correctCountry, countries, id } = questionData;
   const [isCorrect, setIsCorrect] = useState();
   const [answer, setAnswer] = useState(false);
@@ -10,6 +10,7 @@ const Question = ({ questionData }) => {
   const handleAnswer = (answerCode) => {
     console.log(answerCode, correctCountry.alpha2code);
     setAnswer(answerCode);
+    updateQuestions(questionData.id);
     if (answerCode == correctCountry.alpha2code) {
       setIsCorrect(true);
     } else {

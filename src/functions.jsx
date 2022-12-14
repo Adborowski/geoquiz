@@ -5,9 +5,10 @@ const fetchHeaders = new Headers();
 fetchHeaders.append("apikey", "T3mDSdb6OhyhG3hvjLch3XTizzZAaDBA");
 const requestOptions = {
   method: "GET",
-  redirect: "follow",
+  // redirect: "follow",
   headers: fetchHeaders,
 };
+// T3mDSdb6OhyhG3hvjLch3XTizzZAaDBA
 
 export const getCountryData = async (countryCode) => {
   const response = await fetch(

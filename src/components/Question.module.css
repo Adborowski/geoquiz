@@ -4,11 +4,27 @@
   margin-bottom: 12px;
   max-height: 1000px;
   overflow: hidden;
+  animation: slideIn 2s ease;
 }
 
 .Question section {
   padding: 12px;
   padding-top: 18px;
+}
+
+.Question:not(:first-child) {
+  border: 3px solid red;
+  display: none;
+  transition: 2s all ease;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(1000px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
 }
 
 .Question.failed,
@@ -17,9 +33,8 @@
   opacity: 0;
   transition: all 1s ease-in-out 1s, background-color 0.3s ease-in-out 0s;
   max-height: 0px;
-  transform: translateY(-1000px);
+  transform: translateX(-1000px);
   margin: 0;
-  animation: disappear 3s forwards;
 }
 /* transition: property name | duration | timing function | delay */
 :global(.removed) {
