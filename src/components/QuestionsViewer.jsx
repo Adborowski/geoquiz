@@ -14,7 +14,7 @@ export default function QuestionsViewer({ questions }) {
 
   const updateQuestions = (id) => {
     setTimeout(() => {
-      console.log("Answered Q ID:", id);
+      // the timeout is here so the transition can play out
       setQuestionsArray((prev) => {
         return prev.filter((item) => {
           return item.id !== id;

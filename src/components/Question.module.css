@@ -4,7 +4,7 @@
   margin-bottom: 12px;
   max-height: 1000px;
   overflow: hidden;
-  animation: slideIn 2s ease;
+  animation: slideIn 1s ease;
 }
 
 .Question section {
@@ -15,7 +15,7 @@
 .Question:not(:first-child) {
   border: 3px solid red;
   display: none;
-  transition: 2s all ease;
+  transition: 0.5s all ease;
 }
 
 @keyframes slideIn {
@@ -31,12 +31,12 @@
 .Question.completed {
   pointer-events: none;
   opacity: 0;
-  transition: all 1s ease-in-out 1s, background-color 0.3s ease-in-out 0s;
+  transition: all 1s ease-in-out 0.5s, background-color 0.3s ease-in-out 0s;
   max-height: 0px;
   transform: translateX(-1000px);
   margin: 0;
 }
-/* transition: property name | duration | timing function | delay */
+
 :global(.removed) {
   display: none;
 }
