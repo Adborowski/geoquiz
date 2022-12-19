@@ -11,11 +11,9 @@ export default function Summary({
 }) {
   const [isScoreSubmitted, setIsScoreSubmitted] = useState(false);
   const [username, setUsername] = useState();
-  const nameInput = useRef(null);
   const handleSubmit = () => {
-    submitScore(score, nameInput.current.value);
+    submitScore(score, username);
     setIsScoreSubmitted(true);
-    setUsername(nameInput.current.value);
   };
   return (
     <div
@@ -26,8 +24,22 @@ export default function Summary({
         <Scoreboard score={score} />
         {!isScoreSubmitted && (
           <div className={styles.submitControls}>
-            <input ref={nameInput} placeholder={"Your name"}></input>
-            <button onClick={handleSubmit}>Submit Score</button>
+            <form>
+              <input
+                maxLength={20}
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
+                placeholder={"Your name"}
+              ></input>
+              <button
+                type={"submit"}
+                disabled={!username}
+                onClick={handleSubmit}
+              >
+                Submit Score
+              </button>
+            </form>
           </div>
         )}
         {isScoreSubmitted && <HighScores username={username} scores={scores} />}

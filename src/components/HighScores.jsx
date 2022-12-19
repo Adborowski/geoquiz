@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./HighScores.module.css";
 
 export default function HighScores({ scores, username }) {
-  console.log(scores);
+  scores = scores.filter((item, index) => index < 20);
   return (
     <div className={styles.HighScores}>
       {scores.map((score, index) => (

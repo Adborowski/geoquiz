@@ -2,6 +2,9 @@
   margin: auto;
   margin-top: 12px;
   max-width: 200px;
+  max-height: 0px;
+  overflow: hidden;
+  animation: unfold 1.5s ease-in-out forwards;
 }
 
 .highScore {
@@ -17,10 +20,24 @@
   text-align: left;
 }
 
+.highScore span:first-of-type {
+  font-weight: 800;
+  text-align: left;
+}
+
 .highScore span:last-of-type {
   text-align: right;
 }
 
 .own {
   background-color: gold;
+}
+
+@keyframes unfold {
+  0% {
+    max-height: 0px;
+  }
+  100% {
+    max-height: 1000px;
+  }
 }

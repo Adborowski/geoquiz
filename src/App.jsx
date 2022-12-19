@@ -5,14 +5,13 @@ import { getQuestions, submitScore } from "./functions";
 import MapBackground from "./components/MapBackground";
 import Clock from "./components/Clock";
 import Summary from "./components/Summary";
-import HighScores from "./components/HighScores";
 
 const App = () => {
   console.log("App Redrawn");
   const [questions, setQuestions] = useState([]);
   const howManyQuestions = 100;
   const difficulty = 5;
-  const time = 120;
+  const time = 0;
   const [score, setScore] = useState(0);
   const [isGameFinished, setIsGameFinished] = useState();
   const [allScores, setAllScores] = useState([]);

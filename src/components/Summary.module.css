@@ -13,7 +13,7 @@
   margin: auto;
   margin-bottom: 12px;
   display: none;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .Summary.finished {
@@ -34,7 +34,15 @@
 
 .Summary.finished .submitControls {
   animation: fadeIn 1s forwards ease;
-  display: unset;
+  display: block;
+}
+
+.Summary button {
+  transition: 0.3s all ease;
+}
+
+.Summary button:disabled {
+  opacity: 0.5;
 }
 
 @keyframes fadeIn {
@@ -44,4 +52,31 @@
   100% {
     opacity: 1;
   }
+}
+
+.submitControls {
+  margin: auto;
+  margin-top: 12px;
+}
+
+.submitControls input {
+  height: 2rem;
+  margin: auto;
+  display: block;
+  width: 200px;
+  outline: none;
+  border: none;
+  padding: 3px;
+  border-radius: 3px;
+}
+
+.submitControls button {
+  display: block;
+  margin: auto;
+  width: 200px;
+  padding: 12px;
+  margin-top: 6px;
+  border: none;
+  border-radius: 6px;
+  background-color: gold;
 }
