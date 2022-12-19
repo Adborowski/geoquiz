@@ -1,5 +1,9 @@
 .Summary {
-  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 1s all ease-in-out;
+  max-height: 50px;
 }
 
 .Summary .scoreText {
@@ -8,4 +12,26 @@
   display: block;
   margin: auto;
   margin-bottom: 12px;
+  display: none;
+  font-weight: 800;
+}
+
+.Summary.finished {
+  height: 100%;
+  max-height: 800px;
+}
+
+.Summary.finished .scoreText {
+  display: block;
+  animation: fadeIn 1s forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
