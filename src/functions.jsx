@@ -1,8 +1,15 @@
 import { getTopic } from "./TopicsList";
 import { getCountryCode } from "./CountriesList";
 
+const address = "http://178.128.198.24:3000/api/";
+// const address = "localhost:3000/api";
 const getAllCountries = async () => {
-  const response = await fetch(`http://178.128.198.24:3000/api/`);
+  const response = await fetch(address, {
+    mode: "cors",
+    headers: {
+      "x-api-key": import.meta.env.VITE_API_KEY,
+    },
+  });
   const data = await response.json();
   return data;
 };
