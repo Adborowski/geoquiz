@@ -1,10 +1,9 @@
 import styles from "./App.module.css";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import QuestionsViewer from "./components/QuestionsViewer";
-import { getQuestions } from "./functions";
+import { getQuestions, submitScore } from "./functions";
 import MapBackground from "./components/MapBackground";
 import Clock from "./components/Clock";
-import Scoreboard from "./components/Scoreboard";
 import Summary from "./components/Summary";
 
 const App = () => {
@@ -12,9 +11,9 @@ const App = () => {
   const [questions, setQuestions] = useState([]);
   const howManyQuestions = 100;
   const difficulty = 5;
-  const time = 20;
+  const time = 5;
   const [score, setScore] = useState(0);
-  const [isGameFinished, setIsGameFinished] = useState(false);
+  const [isGameFinished, setIsGameFinished] = useState();
 
   useMemo(() => {
     getQuestions(howManyQuestions, difficulty).then((data) => {
@@ -42,7 +41,11 @@ const App = () => {
     <div className={styles.App}>
       <MapBackground />
 
-      <Summary score={score} isGameFinished={isGameFinished} />
+      <Summary
+        score={score}
+        isGameFinished={isGameFinished}
+        submitScore={submitScore}
+      />
 
       {!isGameFinished && (
         <Clock

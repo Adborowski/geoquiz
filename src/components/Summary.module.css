@@ -27,6 +27,16 @@
   opacity: 0;
 }
 
+.Summary .submitControls {
+  display: none;
+  opacity: 0;
+}
+
+.Summary.finished .submitControls {
+  animation: fadeIn 1s forwards ease;
+  display: unset;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;

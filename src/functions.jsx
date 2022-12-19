@@ -14,6 +14,23 @@ const getAllCountries = async () => {
   return data;
 };
 
+export const submitScore = async (score, name) => {
+  console.log("Trying to submit", name, score);
+  const payload = { name: name, score: score };
+  const response = await fetch(address + "submitScore", {
+    mode: "cors",
+    method: "POST",
+    headers: {
+      "x-api-key": import.meta.env.VITE_API_KEY,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+  const data = await response.json();
+  console.log("RESPONSE:", data);
+  return data;
+};
+
 const countries = await getAllCountries();
 
 const getCountryData = (countryCode) => {
