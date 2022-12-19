@@ -4,7 +4,7 @@ import Question from "./Question";
 import Loader from "./Loader";
 import Scoreboard from "./Scoreboard";
 
-export default function QuestionsViewer({ questions }) {
+export default function QuestionsViewer({ questions, isGameFinished }) {
   const [questionsArray, setQuestionsArray] = useState();
   const [score, setScore] = useState(0);
 
@@ -34,6 +34,7 @@ export default function QuestionsViewer({ questions }) {
     <div className={styles.QuestionsViewer}>
       <div className={styles.controls}>
         <Scoreboard score={score} />
+        {isGameFinished ? "Game finished" : ""}
       </div>
       <div className={styles.Questions}>
         {questionsArray && questionsArray.length > 0 ? (
