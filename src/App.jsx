@@ -11,7 +11,7 @@ const App = () => {
   const [questions, setQuestions] = useState([]);
   const howManyQuestions = 100;
   const difficulty = 5;
-  const time = 0;
+  const time = 60;
   const [score, setScore] = useState(0);
   const [isGameFinished, setIsGameFinished] = useState();
   const [allScores, setAllScores] = useState([]);
