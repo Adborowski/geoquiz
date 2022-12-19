@@ -1,10 +1,10 @@
 import { getTopic } from "./TopicsList";
 import { getCountryCode } from "./CountriesList";
 
-const address = "http://178.128.198.24:3000/api/";
-// const address = "localhost:3000/api";
+// const address = "http://178.128.198.24:3000/api/";
+const address = "http://localhost:3000/api/";
 const getAllCountries = async () => {
-  const response = await fetch(address, {
+  const response = await fetch(address + "countries/", {
     mode: "cors",
     headers: {
       "x-api-key": import.meta.env.VITE_API_KEY,
@@ -15,7 +15,6 @@ const getAllCountries = async () => {
 };
 
 export const submitScore = async (score, name) => {
-  console.log("Trying to submit", name, score);
   const payload = { name: name, score: score };
   const response = await fetch(address + "submitScore", {
     mode: "cors",
@@ -27,7 +26,7 @@ export const submitScore = async (score, name) => {
     body: JSON.stringify(payload),
   });
   const data = await response.json();
-  console.log("RESPONSE:", data);
+  console.log(data);
   return data;
 };
 

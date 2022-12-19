@@ -5,15 +5,17 @@ import { getQuestions, submitScore } from "./functions";
 import MapBackground from "./components/MapBackground";
 import Clock from "./components/Clock";
 import Summary from "./components/Summary";
+import HighScores from "./components/HighScores";
 
 const App = () => {
   console.log("App Redrawn");
   const [questions, setQuestions] = useState([]);
   const howManyQuestions = 100;
   const difficulty = 5;
-  const time = 5;
+  const time = 120;
   const [score, setScore] = useState(0);
   const [isGameFinished, setIsGameFinished] = useState();
+  const [allScores, setAllScores] = useState([]);
 
   useMemo(() => {
     getQuestions(howManyQuestions, difficulty).then((data) => {
@@ -37,16 +39,28 @@ const App = () => {
     }, 1000);
   };
 
+  const handleScoreSubmit = async (score, name) => {
+    console.log("x");
+    const scores = submitScore(score, name).then((data) => {
+      console.log(data.body);
+      setAllScores(data.body);
+    });
+  };
+
+  useEffect(() => {
+    console.log("ALL SCORES:", allScores);
+  }, [allScores]);
+
   return (
     <div className={styles.App}>
       <MapBackground />
 
       <Summary
         score={score}
+        scores={allScores}
         isGameFinished={isGameFinished}
-        submitScore={submitScore}
+        submitScore={handleScoreSubmit}
       />
-
       {!isGameFinished && (
         <Clock
           time={time}

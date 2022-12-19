@@ -1,0 +1,26 @@
+.HighScores {
+  margin: auto;
+  margin-top: 12px;
+  max-width: 200px;
+}
+
+.highScore {
+  background-color: white;
+  margin-bottom: 1px;
+  padding: 6px;
+  border-radius: 3px;
+  display: grid;
+  grid-template-columns: 30px 1fr 1fr;
+}
+
+.highScore span {
+  text-align: left;
+}
+
+.highScore span:last-of-type {
+  text-align: right;
+}
+
+.own {
+  background-color: gold;
+}
