@@ -10,7 +10,7 @@ const App = () => {
   const [questions, setQuestions] = useState([]);
   const howManyQuestions = 100;
   const difficulty = 5;
-  const time = 5;
+  const time = 60;
   const [isGameFinished, setIsGameFinished] = useState(false);
 
   useMemo(() => {

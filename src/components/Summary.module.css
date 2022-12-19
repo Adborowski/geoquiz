@@ -1,0 +1,11 @@
+.Summary {
+  border: 1px solid red;
+}
+
+.Summary .scoreText {
+  font-size: 1.2rem;
+  text-align: center;
+  display: block;
+  margin: auto;
+  margin-bottom: 12px;
+}

@@ -3,6 +3,7 @@ import styles from "./QuestionsViewer.module.css";
 import Question from "./Question";
 import Loader from "./Loader";
 import Scoreboard from "./Scoreboard";
+import Summary from "./Summary";
 
 export default function QuestionsViewer({ questions, isGameFinished }) {
   const [questionsArray, setQuestionsArray] = useState();
@@ -32,29 +33,32 @@ export default function QuestionsViewer({ questions, isGameFinished }) {
 
   return (
     <div className={styles.QuestionsViewer}>
+      {isGameFinished && <Summary score={score} />}
+
       <div className={styles.controls}>
-        <Scoreboard score={score} />
-        {isGameFinished ? "Game finished" : ""}
+        {!isGameFinished && <Scoreboard score={score} />}
       </div>
-      <div className={styles.Questions}>
-        {questionsArray && questionsArray.length > 0 ? (
-          questionsArray.map((q) => (
-            <Question
-              updateQuestions={updateQuestions}
-              key={q.id}
-              questionData={q}
-            />
-          ))
-        ) : (
-          <>
-            <button className={styles.reset} onClick={resetQuestions}>
-              Reset
-            </button>
-            <Loader />
-            {questions.length}
-          </>
-        )}
-      </div>
+      {!isGameFinished && (
+        <div className={styles.Questions}>
+          {questionsArray && questionsArray.length > 0 ? (
+            questionsArray.map((q) => (
+              <Question
+                updateQuestions={updateQuestions}
+                key={q.id}
+                questionData={q}
+              />
+            ))
+          ) : (
+            <>
+              <button className={styles.reset} onClick={resetQuestions}>
+                Reset
+              </button>
+              <Loader />
+              {questions.length}
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }

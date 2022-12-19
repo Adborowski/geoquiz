@@ -17,7 +17,7 @@ export default function Clock({ time, handleFinished }) {
         if (prev >= 1) {
           return prev - 1;
         } else {
-          return 0;
+          return null;
         }
       });
     }, 1000);
@@ -27,5 +27,9 @@ export default function Clock({ time, handleFinished }) {
     };
   }, []);
 
-  return <div className={styles.Clock}>{timeLeft}</div>;
+  return (
+    <div className={`${styles.Clock} ${!timeLeft ? styles.hidden : ""}`}>
+      <span>{timeLeft}</span>
+    </div>
+  );
 }
