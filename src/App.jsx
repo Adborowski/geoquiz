@@ -48,6 +48,7 @@ const App = () => {
 
   useEffect(() => {
     console.log("ALL SCORES:", allScores);
+    // all scores
   }, [allScores]);
 
   return (
